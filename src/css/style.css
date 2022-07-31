@@ -1,0 +1,81 @@
+/*
+* 1. position
+* 2. size
+* 3. style
+*/
+
+body {
+  margin: 0;
+  font-family: 'Work Sans', sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-top: 90px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  height: 70px;
+
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  color: rgb(12,86,124);
+  transition: color .3s ease;
+}
+
+.header-logo {
+  margin-right: auto;
+}
+
+.header-menu-container {
+  display: flex;
+  float: right;
+  max-width: 70%;
+}
+
+.header-menu-item {
+  position: relative;
+  padding: 10px;
+}
+
+.header-menu-dropdown-list {
+  display: none;
+  position: absolute;
+  left: -30px;
+  padding-top: 10px;
+}
+
+.header-menu-item-select {
+  padding: 5px 0;
+}
+
+.active {
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  animation: ani .5s forwards;
+}
+
+@keyframes ani {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@font-face {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/Work_Sans/static/WorkSans-Regular.ttf');
+}
