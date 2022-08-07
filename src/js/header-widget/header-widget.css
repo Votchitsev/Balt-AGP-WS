@@ -109,11 +109,6 @@
   100% { left: 0 }
 }
 
-@keyframes mini {
-  0% { display: none }
-  100% { display: flex}
-}
-
 @media (max-width: 970px) {
 
   .header-menu-container {
@@ -127,11 +122,8 @@
     width: 22px;
     height: 22px;
   }
-}
 
-@font-face {
-  font-family: "Work Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: url('../fonts/Work_Sans/static/WorkSans-Regular.ttf');
+  .toggle-element:nth-child(2) {
+    margin-left: auto;
+  }
 }

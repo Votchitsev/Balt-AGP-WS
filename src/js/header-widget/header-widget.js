@@ -4,56 +4,56 @@
 */
 
 export default class Header {
-  constructor() {
-    this.dropDownButton = document.querySelector('.header-menu-item > a');
-    this.dropDownElement = document.querySelector('.header-menu-dropdown-list');
-    this.toggle = document.querySelector('#toggle');
-    this.toggleElements = document.querySelectorAll('.toggle-element');
-    this.miniMenu = document.querySelector('.header-mini-menu');
-    this.miniMenuCloseElement = document.querySelector('.mini-menu-close-element');
-
-    this.toggleElements[1].style.marginLeft = 'auto';
-    this.addToogleListener();
+  constructor(element) {
+    this.element = element;
   }
 
   addDropDownMenuListeners() {
-    this.dropDownButton.addEventListener('mouseenter', () => {
-      this.dropDownElement.classList.add('active');
+    const dropDownButton = this.element.querySelector('.header-menu-item > a');
+    const dropDownElement = this.element.querySelector('.header-menu-dropdown-list');
+
+    dropDownButton.addEventListener('mouseenter', () => {
+      dropDownElement.classList.add('active');
     });
 
-    this.dropDownButton.addEventListener('mouseleave', () => {
-      this.dropDownElement.classList.remove('active');
+    dropDownButton.addEventListener('mouseleave', () => {
+      dropDownElement.classList.remove('active');
     });
 
-    this.dropDownElement.addEventListener('mouseenter', (element) => {
+    dropDownElement.addEventListener('mouseenter', (element) => {
       element.target.classList.add('active');
     });
 
-    this.dropDownElement.addEventListener('mouseleave', (element) => {
+    dropDownElement.addEventListener('mouseleave', (element) => {
       element.target.classList.remove('active');
     });
   }
 
   addToggleAnimationListeners() {
     const secondElOfToggle = document.querySelectorAll('.toggle-element')[1];
+    const toggle = this.element.querySelector('#toggle');
 
-    this.toggle.addEventListener('mouseenter', () => {
+    toggle.addEventListener('mouseenter', () => {
       secondElOfToggle.style.marginLeft = '0';
     });
 
-    this.toggle.addEventListener('mouseleave', () => {
+    toggle.addEventListener('mouseleave', () => {
       secondElOfToggle.style.marginLeft = 'auto';
     });
   }
 
   addToogleListener() {
-    this.toggle.addEventListener('click', (element) => {
+    const miniMenu = this.element.querySelector('.header-mini-menu');
+    const miniMenuCloseElement = this.element.querySelector('.mini-menu-close-element');
+    const toggle = this.element.querySelector('#toggle');
+
+    toggle.addEventListener('click', (element) => {
       element.preventDefault();
-      this.miniMenu.style.display = 'flex';
+      miniMenu.style.display = 'flex';
     });
 
-    this.miniMenuCloseElement.addEventListener('click', () => {
-      this.miniMenu.style.display = 'none';
+    miniMenuCloseElement.addEventListener('click', () => {
+      miniMenu.style.display = 'none';
     });
   }
 }
