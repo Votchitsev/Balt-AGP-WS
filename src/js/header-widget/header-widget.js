@@ -13,19 +13,35 @@ export default class Header {
     const dropDownElement = this.element.querySelector('.header-menu-dropdown-list');
 
     dropDownButton.addEventListener('mouseenter', () => {
-      dropDownElement.classList.add('active');
+      if (window.innerWidth > 970) {
+        dropDownElement.classList.add('active');
+      }
     });
 
     dropDownButton.addEventListener('mouseleave', () => {
-      dropDownElement.classList.remove('active');
+      if (window.innerWidth > 970) {
+        dropDownElement.classList.remove('active');
+      }
     });
 
     dropDownElement.addEventListener('mouseenter', (element) => {
-      element.target.classList.add('active');
+      if (window.innerWidth > 970) {
+        element.target.classList.add('active');
+      }
     });
 
     dropDownElement.addEventListener('mouseleave', (element) => {
-      element.target.classList.remove('active');
+      if (window.innerWidth > 970) {
+        element.target.classList.remove('active');
+      }
+    });
+
+    dropDownButton.addEventListener('click', () => {
+      if (dropDownElement.classList.contains('active')) {
+        dropDownElement.classList.remove('active');
+      } else {
+        dropDownElement.classList.add('active');
+      }
     });
   }
 
@@ -43,17 +59,27 @@ export default class Header {
   }
 
   addToogleListener() {
-    const miniMenu = this.element.querySelector('.header-mini-menu');
+    const miniMenu = this.element.querySelector('.header-menu-container');
     const miniMenuCloseElement = this.element.querySelector('.mini-menu-close-element');
     const toggle = this.element.querySelector('#toggle');
+    const logo = this.element.querySelector('.header-logo');
 
     toggle.addEventListener('click', (element) => {
       element.preventDefault();
       miniMenu.style.display = 'flex';
+      toggle.style.display = 'none';
+      logo.style.display = 'none';
+
+      setTimeout(() => {
+        miniMenuCloseElement.style.display = 'flex';
+      }, 500);
     });
 
     miniMenuCloseElement.addEventListener('click', () => {
       miniMenu.style.display = 'none';
+      toggle.style.display = 'flex';
+      miniMenuCloseElement.style.display = 'none';
+      logo.style.display = '';
     });
   }
 }
